@@ -1,0 +1,71 @@
+
+<div class="container">
+
+  <div class="infos wrapper-grey">
+    <div class="infos-basic">
+      <h1><%= @restaurant.name %></h1>
+      <p><%= @restaurant.category %></p>
+    </div>
+    <div class="infos-extra text-center">
+      <p><%= @restaurant.address %></p>
+      <p><%= @restaurant.phone_number %></p>
+    </div>
+  </div>
+
+  <hr>
+  <div class="flex">
+    <h3>Reviews</h3>
+    <%= link_to 'Write a review', new_restaurant_review_path(@restaurant), :class => "btn btn-info" %>
+  </div>
+  <div class="content-review wrapper-grey">
+
+    <% @restaurant.reviews.each do |review| %>
+        <div class="content-review-one">
+          <div class="stars">
+            <% if review.rating == 0 %>
+              <i class="fa fa-star" style="color: lightgray"></i>
+              <i class="fa fa-star" style="color: lightgray"></i>
+              <i class="fa fa-star" style="color: lightgray"></i>
+              <i class="fa fa-star" style="color: lightgray"></i>
+              <i class="fa fa-star" style="color: lightgray"></i>
+              <% elsif review.rating == 1 %>
+              <i class="fa fa-star" style="color: orange"></i>
+              <i class="fa fa-star" style="color: orange"></i>
+              <i class="fa fa-star" style="color: lightgray"></i>
+              <i class="fa fa-star" style="color: lightgray"></i>
+              <i class="fa fa-star" style="color: lightgray"></i>
+            <% elsif review.rating == 2 %>
+              <i class="fa fa-star" style="color: orange"></i>
+              <i class="fa fa-star" style="color: orange"></i>
+              <i class="fa fa-star" style="color: lightgray"></i>
+              <i class="fa fa-star" style="color: lightgray"></i>
+              <i class="fa fa-star" style="color: lightgray"></i>
+            <% elsif review.rating == 3 %>
+              <i class="fa fa-star" style="color: orange"></i>
+              <i class="fa fa-star" style="color: orange"></i>
+              <i class="fa fa-star" style="color: orange"></i>
+              <i class="fa fa-star" style="color: lightgray"></i>
+              <i class="fa fa-star" style="color: lightgray"></i>
+            <% elsif review.rating == 4 %>
+              <i class="fa fa-star" style="color: orange"></i>
+              <i class="fa fa-star" style="color: orange"></i>
+              <i class="fa fa-star" style="color: orange"></i>
+              <i class="fa fa-star" style="color: orange"></i>
+              <i class="fa fa-star" style="color: lightgray"></i>
+            <% elsif review.rating == 5 %>
+              <i class="fa fa-star" style="color: orange"></i>
+              <i class="fa fa-star" style="color: orange"></i>
+              <i class="fa fa-star" style="color: orange"></i>
+              <i class="fa fa-star" style="color: orange"></i>
+              <i class="fa fa-star" style="color: orange"></i>
+            <% end %>
+          </div>
+          <div class="content">
+            <%= review.content %>
+          </div>
+        </div>
+    <% end %>
+  </div>
+
+  <%= link_to 'Back to Home', restaurants_path, :class => "btn btn-success" %>
+</div>

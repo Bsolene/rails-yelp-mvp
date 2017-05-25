@@ -4,7 +4,7 @@ class Restaurant < ApplicationRecord
   has_many :reviews, dependent: :destroy
   validates :name, uniqueness: true, presence: true
   validates :address, presence: true
-  validates :category, inclusion: { in: CATEGORIES }
+  validates :category, inclusion: { in: CATEGORIES }, presence: true
   validates :phone_number, presence: true, format: { with: /\d{2} ?\d{2} ?\d{2} ?\d{2} ?\d{2} ?/}
 
 end
